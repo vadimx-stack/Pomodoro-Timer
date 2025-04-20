@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pomodoro Timer - Метод управления временем</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="pomodoro-app">
+            <header>
+                <h1>Pomodoro Timer</h1>
+                <p class="subtitle">Повысьте свою продуктивность</p>
+            </header>
+            
+            <div class="modes">
+                <button id="mode-pomodoro" class="mode-btn active">Работа</button>
+                <button id="mode-short-break" class="mode-btn">Короткий перерыв</button>
+                <button id="mode-long-break" class="mode-btn">Длинный перерыв</button>
+            </div>
+            
+            <div class="timer-container">
+                <div class="timer-circle">
+                    <div class="timer-background"></div>
+                    <div id="timer" class="timer">25:00</div>
+                    <div class="timer-progress"></div>
+                </div>
+                
+                <div class="timer-controls">
+                    <button id="start-btn" class="control-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                        </svg>
+                        <span>Старт</span>
+                    </button>
+                    <button id="pause-btn" class="control-btn" disabled>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="6" y="4" width="4" height="16"></rect>
+                            <rect x="14" y="4" width="4" height="16"></rect>
+                        </svg>
+                        <span>Пауза</span>
+                    </button>
+                    <button id="reset-btn" class="control-btn" disabled>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 2v6h6"></path>
+                            <path d="M21 12A9 9 0 0 0 6 5.3L3 8"></path>
+                            <path d="M21 22v-6h-6"></path>
+                            <path d="M3 12a9 9 0 0 0 15 6.7l3-2.7"></path>
+                        </svg>
+                        <span>Сброс</span>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="settings-container">
+                <div class="settings-header">
+                    <h2>Настройки</h2>
+                </div>
+                <div class="settings-body">
+                    <div class="setting-group">
+                        <label for="pomodoro-time">Время работы (мин)</label>
+                        <input type="number" id="pomodoro-time" min="1" max="60" value="25">
+                    </div>
+                    <div class="setting-group">
+                        <label for="short-break-time">Короткий перерыв (мин)</label>
+                        <input type="number" id="short-break-time" min="1" max="30" value="5">
+                    </div>
+                    <div class="setting-group">
+                        <label for="long-break-time">Длинный перерыв (мин)</label>
+                        <input type="number" id="long-break-time" min="1" max="60" value="15">
+                    </div>
+                    <div class="setting-group">
+                        <label for="auto-start">Автоматический старт</label>
+                        <label class="switch">
+                            <input type="checkbox" id="auto-start">
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                    <div class="setting-group">
+                        <label for="notification">Уведомления</label>
+                        <label class="switch">
+                            <input type="checkbox" id="notification" checked>
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                </div>
+                <div class="settings-footer">
+                    <button id="save-settings" class="save-btn">Сохранить настройки</button>
+                </div>
+            </div>
+            
+            <div class="pomodoro-sessions">
+                <h2>Статистика сессий</h2>
+                <div class="sessions-stats">
+                    <div class="stat-item">
+                        <span id="completed-pomodoros" class="stat-value">0</span>
+                        <span class="stat-label">Завершено</span>
+                    </div>
+                    <div class="stat-item">
+                        <span id="total-time" class="stat-value">0м</span>
+                        <span class="stat-label">Время</span>
+                    </div>
+                </div>
+                <div class="sessions-history" id="sessions-history">
+                    <p class="empty-history">История сессий пуста</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="notification" id="notification-box">
+        <p>Время вышло! Пора отдохнуть.</p>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html> 
